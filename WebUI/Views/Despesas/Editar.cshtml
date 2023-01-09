@@ -1,0 +1,71 @@
+﻿@model Application.DTOs.DespesaDTO
+@{
+    ViewData["Title"] = "Cadastro de Despesas";
+}
+
+<section class="container border border-danger border-3 rounded-3 p-4 mt-5 vh-50">
+
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <form asp-action="Editar" method="post" class="container">
+        <div class="form-horizontal">
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Nome" class="form-control" id="floatingInput" placeholder="Nome da Despesa">
+                <span asp-validation-for="Nome" class="text-danger"></span>
+                <label asp-for="Nome" for="floatingInput">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tags-fill" viewBox="0 0 16 16">
+                        <path d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                        <path d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043-7.457-7.457z" />
+                    </svg>
+                    Nome
+                </label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Data" class="form-control" id="floatingInput" placeholder="Data da despesa">
+                <span asp-validation-for="Data" class="text-danger"></span>
+                <label asp-for="Data" for="floatingInput">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-plus-fill" viewBox="0 0 16 16">
+                        <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8.5 8.5V10H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V11H6a.5.5 0 0 1 0-1h1.5V8.5a.5.5 0 0 1 1 0z" />
+                    </svg>
+                    Data
+                </label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Valor" class="form-control" id="floatingInput" placeholder="Valor">
+                <span asp-validation-for="Valor" class="text-danger"></span>
+                <label asp-for="Valor" for="floatingInput">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                    </svg>
+                    Valor
+                </label>
+            </div>
+            <div class="form-group mb-3 ">
+                <label asp-for="CategoriaId" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"> </select>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" value="Cadastrar" class="btn btn-success">
+                        Cadastrar
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                        </svg>
+                    </button>
+                    <a asp-action="Index" class="btn btn-info">
+                        Voltar para lista
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
